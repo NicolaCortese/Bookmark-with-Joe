@@ -15,13 +15,16 @@ describe Class do
   end
   
   it 'returns a new bookmark after one has been added' do
-    connection = PG.connect(dbname: 'bookmark_manager_test')
+    
+    bookmark = Bookmarks.add('www.bbc.co.uk','BBC')
+    persisted_data = PG.connect(dbname: 'bookmark_manager_test').query(
+      "SELECT * FROM bookmarks WHERE id = #{bookmark.id};")
+    
 
-    Bookmarks.add('www.bbc.co.uk','BBC')
-
-    bookmarks = Bookmarks.all
-
-    expect(bookmarks.last.url).to include 'www.bbc.co.uk'
+    expect(bookmark).to be_a Bookmarks
+    expect(bookmark.id).to eq persisted_data.first['id']
+    expect(bookmark.url).to eq "www.bbc.co.uk"
+    expect(bookmark.title).to eq "BBC"
 
   end
 
