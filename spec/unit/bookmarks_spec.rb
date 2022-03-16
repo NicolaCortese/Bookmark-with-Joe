@@ -5,9 +5,7 @@ describe Class do
   it 'returns a list of bookmarks' do
     connection = PG.connect(dbname: 'bookmark_manager_test')
     
-    Bookmarks.add('http://www.makersacademy.com','Makers')
-    Bookmarks.add('http://www.destroyallsoftware.com','Destroy')
-    Bookmarks.add('http://www.google.com','Google')
+    add_bookmarks
     
     bookmarks = Bookmarks.all
 
