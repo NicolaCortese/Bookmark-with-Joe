@@ -5,9 +5,10 @@ feature "testing adding bookmark" do
     
     visit ('/bookmarks/new')
     fill_in('url', with: 'www.bbc.co.uk')
+    fill_in('title', with: 'BBC')
     click_on 'Submit'
 
-    expect(page).to have_content "www.bbc.co.uk"
+    expect(page).to have_content "BBC"
   
   end
 

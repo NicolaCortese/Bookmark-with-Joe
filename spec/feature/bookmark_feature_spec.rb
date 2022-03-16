@@ -3,15 +3,15 @@ feature "Testing Bookmark Route" do
 
     connection = PG.connect(dbname: 'bookmark_manager_test')
     
-    Bookmarks.add('http://www.makersacademy.com')
-    Bookmarks.add('http://www.destroyallsoftware.com')
-    Bookmarks.add('http://www.google.com')
+    Bookmarks.add('http://www.makersacademy.com','Makers')
+    Bookmarks.add('http://www.destroyallsoftware.com','Destroy')
+    Bookmarks.add('http://www.google.com','Google')
     
     visit ('/bookmarks')
 
-    expect(page).to have_content "http://www.makersacademy.com"
-    expect(page).to have_content "http://www.destroyallsoftware.com"
-    expect(page).to have_content "http://www.google.com"
+    expect(page).to have_content "Makers"
+    expect(page).to have_content "Destroy"
+    expect(page).to have_content "Google"
   
   end
 

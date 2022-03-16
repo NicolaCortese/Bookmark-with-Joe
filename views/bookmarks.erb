@@ -1,6 +1,9 @@
 <p>List of Bookmarks:</p>
 <ul>
   <% @list.each do |bookmark| %>
-    <li> <%= bookmark %> </li>
+    <li> <%= bookmark.title %> </li>
   <% end %>
 </ul>
+<form action='/bookmarks/new' >
+  <input type="submit" value="Add New Bookmark" />
+</form>
