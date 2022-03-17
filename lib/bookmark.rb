@@ -35,6 +35,10 @@ class Bookmark
     Bookmark.new(result[0]['id'],result[0]['url'],result[0]['title'])
   end
 
+  def self.add_comment
+
+  end
+
 private
 
   def self.is_url(url)

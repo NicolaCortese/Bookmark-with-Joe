@@ -14,6 +14,9 @@
         <input type='hidden' name='_method' value='PATCH'/>  
         <input type="submit" value="Update" />
       </form>
+      <form action="/bookmarks/comment/<%= bookmark.id %>" method="post">
+        <input type="submit" value="Add Comment" />
+      </form>
     </li>
   <% end %>
 </ul>
