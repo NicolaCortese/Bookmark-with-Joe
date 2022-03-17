@@ -28,4 +28,14 @@ describe Class do
 
   end
 
+  it '#update a bookmark with new details' do
+    bookmark = Bookmarks.add('www.bbc.co.uk','BBC')
+    Bookmarks.update(bookmark.id, "http://www.makersacademy.com","Makers")
+    updated_bookmark = PG.connect(dbname: 'bookmark_manager_test').query(
+      "SELECT * FROM bookmarks WHERE id = #{bookmark.id};")
+    expect(updated_bookmark.first['title']).to eq "Makers"
+    expect(updated_bookmark.first['url']).to eq "http://www.makersacademy.com"
+
+  end
+
 end
