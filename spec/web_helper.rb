@@ -1,5 +1,5 @@
 def add_bookmarks
-  Bookmarks.add('http://www.makersacademy.com','Makers')
-  Bookmarks.add('http://www.destroyallsoftware.com','Destroy')
-  Bookmarks.add('http://www.google.com','Google')
+  Bookmark.add('http://www.makersacademy.com','Makers')
+  Bookmark.add('http://www.destroyallsoftware.com','Destroy')
+  Bookmark.add('http://www.google.com','Google')
 end

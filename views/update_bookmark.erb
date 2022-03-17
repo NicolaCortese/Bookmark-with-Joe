@@ -1,5 +1,5 @@
 <form action='/bookmarks/update' method='post' >
-  Update URL:<input type="text" name="new_url" />
-  Update title:<input type="text" name="new_title" />
+  Update URL:<input type="text" name="new_url" value="<%= @current_bookmark.url%>" />
+  Update title:<input type="text" name="new_title" value="<%= @current_bookmark.title%>" />
   <input type="submit" value="Save" />
 </form>

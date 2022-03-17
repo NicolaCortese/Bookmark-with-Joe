@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
-require_relative './lib/bookmarks'
+require_relative './lib/bookmark'
 
 class BookmarkManager < Sinatra::Base
   configure :development do
@@ -14,7 +14,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/bookmarks' do
-    @list = Bookmarks.all
+    @list = Bookmark.all
     erb :bookmarks
     # "List of Bookmarks"
   end
@@ -26,12 +26,12 @@ class BookmarkManager < Sinatra::Base
   post '/bookmarks' do
     url = params[:url]
     title = params[:title]
-    Bookmarks.add(url,title)
+    Bookmark.add(url,title)
     redirect '/bookmarks'
   end
 
   delete '/bookmarks/:id' do
-    Bookmarks.delete(params[:id])
+    Bookmark.delete(params[:id])
     redirect '/bookmarks'
   end
 
@@ -41,11 +41,12 @@ class BookmarkManager < Sinatra::Base
   end
     
   get '/bookmarks/update' do
+    @current_bookmark = Bookmark.find(session[:update_id])
     erb :update_bookmark
   end
 
   post '/bookmarks/update' do
-    Bookmarks.update(session[:update_id],params[:new_url],params[:new_title])
+    Bookmark.update(session[:update_id],params[:new_url],params[:new_title])
     redirect '/bookmarks'
   end
 
