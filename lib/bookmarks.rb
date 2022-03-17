@@ -38,8 +38,8 @@ class Bookmarks
     else
       connection = PG.connect(dbname: 'bookmark_manager')
     end
-
-    connection.exec_params("DELETE FROM bookmarks WHERE title = $1;", [id])
+   
+    connection.exec("DELETE FROM bookmarks WHERE id = #{id};")
   end
 
 end
