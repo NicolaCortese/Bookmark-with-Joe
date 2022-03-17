@@ -1,6 +1,7 @@
 require_relative './setup_test_database'
 require_relative './web_helper'
 
+
 # Set the environment to "test"
 ENV['ENVIRONMENT'] = 'test'
 

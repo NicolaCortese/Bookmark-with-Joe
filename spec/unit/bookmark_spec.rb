@@ -3,7 +3,6 @@ require 'bookmark'
 describe Class do
 
   it 'returns a list of bookmarks' do
-    connection = PG.connect(dbname: 'bookmark_manager_test')
     
     add_bookmarks
     

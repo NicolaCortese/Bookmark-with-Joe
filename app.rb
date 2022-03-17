@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require_relative './lib/bookmark'
+require_relative './lib/database_connection_setup'
 
 class BookmarkManager < Sinatra::Base
   configure :development do
@@ -35,7 +36,7 @@ class BookmarkManager < Sinatra::Base
     redirect '/bookmarks'
   end
 
-  post '/bookmarks/update/:update_id' do
+  patch '/bookmarks/update/:update_id' do
     session[:update_id] = params[:update_id] 
     redirect '/bookmarks/update'
   end

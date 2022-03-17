@@ -2,8 +2,6 @@
 
 feature "Testing Bookmark Route" do
   scenario "returns List of Bookmarks" do
-
-    connection = PG.connect(dbname: 'bookmark_manager_test')
     
     add_bookmarks
     
@@ -16,8 +14,6 @@ feature "Testing Bookmark Route" do
   end
 
   scenario "returns List of Bookmarks" do
-
-    connection = PG.connect(dbname: 'bookmark_manager_test')
     
     add_bookmarks
     
