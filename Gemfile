@@ -4,6 +4,7 @@ ruby '3.1.1'
 
 gem 'sinatra'
 gem 'pg'
+gem 'sinatra-flash'
 
 group :test do
   gem 'capybara'
@@ -18,4 +19,5 @@ end
 
 group :development, :test do
   gem 'rubocop', '1.20'
+
 end

@@ -1,4 +1,5 @@
 <p>List of Bookmarks:</p>
+<p><%= flash[:notice] %></p>
 <ul>
   <% @list.each do |bookmark| %>
     <li class="bookmark" id="bookmark-<%= bookmark.id %>">
