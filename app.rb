@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require_relative './lib/bookmark'
+require_relative './lib/comment'
 require_relative './lib/database_connection_setup'
 require 'sinatra/flash'
 
@@ -18,6 +19,7 @@ class BookmarkManager < Sinatra::Base
 
   get '/bookmarks' do
     @list = Bookmark.all
+    @comments = Comment.all
     erb :bookmarks
     # "List of Bookmarks"
   end
@@ -61,6 +63,14 @@ class BookmarkManager < Sinatra::Base
   get '/bookmarks/comment' do
     @current_bookmark = Bookmark.find(session[:comment_id])
     erb :comment_bookmark
+  end
+  
+  post '/bookmarks/comment' do
+    #adds the comment to the table with the comment_id 
+    #as the reference to link the two tables
+    text = params[:new_comment]
+    DatabaseConnection.query("INSERT INTO comments (text, bookmark_id) VALUES ($1,$2)",[text,session[:comment_id]])
+    redirect '/bookmarks'
   end
 
   run! if app_file == $0

@@ -14,6 +14,15 @@
         <input type='hidden' name='_method' value='PATCH'/>  
         <input type="submit" value="Update" />
       </form>
+      <ul>
+        <% @comments.each do |comment| %>
+          <% if comment.bookmark_id == bookmark.id %>
+          <li class="comment" id="comment-<%= comment.id %>">
+            <%= comment.text %>
+          </li>
+          <% end %>
+        <% end %>
+      </ul>
       <form action="/bookmarks/comment/<%= bookmark.id %>" method="post">
         <input type="submit" value="Add Comment" />
       </form>

@@ -1,4 +1,5 @@
-<form action='/bookmarks/update' method='post' >
+<p><%= @current_bookmark.title %> </p><br>
+<form action='/bookmarks/comment' method='post' >
   Add comment:<input type="text" name="new_comment" />
   <input type="submit" value="Save" />
 </form>
